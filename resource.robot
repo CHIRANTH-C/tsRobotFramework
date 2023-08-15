@@ -9,7 +9,7 @@ Variables    Constants/Xpaths/solution.py
 
 ${WEBSITE_URL}    url
 ${BROWSER}    Chrome
-${EXEC_PATH}    Constants/Driver/chromedriver.exe
+${EXEC_PATH}    Constants/Driver/chromedriver.exe    
 
 *** Keywords ***
 # def open_browser_to_url
@@ -75,7 +75,6 @@ User Performs Filter On Current Date
     ${xpath2}    Create New Dynamic Xpath    ${select_date_1}    8    1
     ${xpath3}    Create New Dynamic Xpath    ${select_date_2}    8    1
     ${compount_xpath}=    Catenate    SEPARATOR=    ${xpath2} | ${xpath3}
-    Log To Console    ${compount_xpath}
     Wait Until Element Is Visible    ${compount_xpath}
     Click Element    ${compount_xpath}
 
@@ -95,7 +94,6 @@ User Performs Filter On Current Date
     ${xpath2}    Create New Dynamic Xpath    ${select_date_1}    8    1
     ${xpath3}    Create New Dynamic Xpath    ${select_date_2}    8    1
     ${compount_xpath}=    Catenate    SEPARATOR=    ${xpath2} | ${xpath3}
-    Log To Console    ${compount_xpath}
     Wait Until Element Is Visible    ${compount_xpath}
     Click Element    ${compount_xpath}
 
@@ -128,3 +126,35 @@ Submitted Time Sheet Should Be In Pending Apporval State
     ${dxp5}    Create New Dynamic Xpath    ${ts_date_row}    Umesh
     Wait Until Element Is Visible    ${dxp5}
     Mouse Over    ${dxp5}
+
+
+User Adds Overtime Activity To The TS
+    Wait Until Element Is Visible    ${btn_add_new_activity}
+    Click Button    ${btn_add_new_activity}
+    Wait Until Element Is Visible    ${select_activity_drop_down}
+    Click Element    ${select_activity_drop_down}
+    ${dxp7}    Create New Dynamic Xpath    ${select_specific_activity}    Break
+    Wait Until Element Is Visible    ${dxp7}
+    Click Element    ${dxp7}
+    Wait Until Element Is Visible    ${activity_start_time}
+    Click Element    ${activity_start_time}
+    ${dxp8}    Create New Dynamic Xpath    ${txt_input_hrs}    1
+    Wait Until Element Is Visible    ${dxp8}
+    Input Text    ${dxp8}    01
+    ${dxp9}    Create New Dynamic Xpath    ${txt_input_mins}    1
+    Wait Until Element Is Visible    ${dxp9}
+    Input Text    ${dxp9}    00
+    Wait Until Element Is Visible    ${activity_end_time}
+    Click Element    ${activity_end_time}
+    ${dxp10}    Create New Dynamic Xpath    ${txt_input_hrs}    2
+    Wait Until Element Is Visible    ${dxp10}
+    Input Text    ${dxp10}    02
+    ${dxp11}    Create New Dynamic Xpath    ${txt_input_mins}    2
+    Wait Until Element Is Visible    ${dxp11}
+    Input Text    ${dxp11}    00
+    Wait Until Element Is Visible    ${btn_save}
+    Click Button    ${btn_save}
+
+Added Activity Should Be Visible In The Activity List Of TS
+    ${dxp12}    Create New Dynamic Xpath    ${activity_entry}    Break
+    Wait Until Element Is Visible    ${dxp12}
