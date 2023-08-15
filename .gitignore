@@ -1,0 +1,11 @@
+__pycache__/*
+*.png
+.tsenv
+*.log
+*.avi
+*.pyc
+reports
+*.css
+.robot
+*.html
+*.xml
