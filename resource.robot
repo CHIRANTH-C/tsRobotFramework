@@ -6,8 +6,8 @@ Variables    Constants/Xpaths/timesheet.py
 Variables    Constants/Xpaths/solution.py
 
 *** Variables ***
-# ${WEBSITE_URL}    https://login.raman.devzinier.net
-${WEBSITE_URL}    https://login.edison.devzinier.net
+
+${WEBSITE_URL}    url
 ${BROWSER}    Chrome
 ${EXEC_PATH}    Constants/Driver/chromedriver.exe
 
@@ -28,14 +28,14 @@ The Zinier Web Is Up And Running
 The User Login As Admin
     Page Should Contain Element    ${txt_box_env}
     Page Should Contain Element    ${txt_box_org}
-    Input Text    ${txt_box_env}    edison
-    Input Text    ${txt_box_org}    tsqa1
+    Input Text    ${txt_box_env}    env
+    Input Text    ${txt_box_org}    org
     Click Button    ${btn_element}
     Wait Until Element Is Visible    ${txt_box_username}
     Page Should Contain Textfield    ${txt_box_username}
     Page Should Contain Textfield    ${txt_box_password}
-    Input Text    ${txt_box_username}    umesh.a@zinier.com
-    Input Text    ${txt_box_password}    AmulJhan@10218
+    Input Text    ${txt_box_username}    uname
+    Input Text    ${txt_box_password}    creds
     Click Button    ${btn_element}
 User Navigates To Timesheet Screen
     Wait Until Element Is Visible    ${nav_bar_ts}    20    "could not load the page even after 20 sec"
